@@ -4,7 +4,7 @@
   "description": "sicei application to get alumnos",
   "main": "index.js",
   "scripts": {
-    "start": "node siceiApp.js"
+    "start": "node siceiApp"
   },
   "keywords": [],
   "author": "Andrea Sáenz",
