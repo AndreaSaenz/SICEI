@@ -1,0 +1,15 @@
+{
+  "name": "sicei",
+  "version": "1.0.0",
+  "description": "sicei application to get alumnos",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/siceiApp"
+  },
+  "keywords": [],
+  "author": "Andrea Sáenz",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
