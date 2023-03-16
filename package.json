@@ -4,12 +4,17 @@
   "description": "sicei application to get alumnos",
   "main": "index.js",
   "scripts": {
-    "start": "node siceiApp"
+    "start": "node siceiApp",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "keywords": [],
   "author": "Andrea Sáenz",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3"
   }
 }
