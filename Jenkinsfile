@@ -42,10 +42,6 @@ pipeline {
         }
         stage('Creating container') {
             steps {
-                sh '''
-                branch=$(echo $GIT_BRANCH | cut -d'/' -f 2)
-                docker run -d -p 8080:8080 --name sicei-container sicei-$branch:1.0.0-$BUILD_NUMBER
-                '''
                 sh 'docker container ls -a'
                 sh '''
                 branch=$(echo $GIT_BRANCH | cut -d'/' -f 2)
