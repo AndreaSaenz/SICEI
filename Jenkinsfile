@@ -41,21 +41,24 @@ pipeline {
             }
         }
         stage('Creating container') {
-            sh '''
-            branch=$(echo $GIT_BRANCH | cut -d'/' -f 2)
-            docker run -d -p 8080:8080 --name sicei-container sicei-$branch:1.0.0-$BUILD_NUMBER
-            '''
-            sh 'docker container ls -a'
-            sh '''
-            branch=$(echo $GIT_BRANCH | cut -d'/' -f 2)
-            docker run -p 127.0.0.1:30$BUILD_NUMBER:3000 --name sicei-$branch-$BUILD_NUMBER -d sicei-$branch:1.0.0-$BUILD_NUMBER
-            '''
-            sh 'docker container ls -a'
-            sh '''
-            branch=$(echo $GIT_BRANCH | cut -d'/' -f 2)
-            docker container start sicei-$branch-$BUILD_NUMBER
-            '''
-            sh 'docker container ls'
+            steps {
+                sh '''
+                branch=$(echo $GIT_BRANCH | cut -d'/' -f 2)
+                docker run -d -p 8080:8080 --name sicei-container sicei-$branch:1.0.0-$BUILD_NUMBER
+                '''
+                sh 'docker container ls -a'
+                sh '''
+                branch=$(echo $GIT_BRANCH | cut -d'/' -f 2)
+                docker run -p 127.0.0.1:30$BUILD_NUMBER:3000 --name sicei-$branch-$BUILD_NUMBER -d sicei-$branch:1.0.0-$BUILD_NUMBER
+                '''
+                sh 'docker container ls -a'
+                sh '''
+                branch=$(echo $GIT_BRANCH | cut -d'/' -f 2)
+                docker container start sicei-$branch-$BUILD_NUMBER
+                '''
+                sh 'docker container ls'
+            }
+            
         }
     }
 }
